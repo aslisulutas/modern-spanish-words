@@ -59,4 +59,4 @@ mano|el|Dame la mano.
 ojo|göz|Tiene los ojos verdes.
 dinero|para|No tengo dinero.
 viaje|yolculuk|¡Buen viaje!`;
-export const WORDS: Word[] = raw.split("\n").map((l) => { const [es, tr, ex] = l.split("|"); return { es, tr, ex }; });
+export const WORDS: Word[] = raw.split("\n").map((l) => { const [es = "", tr = "", ex = ""] = l.split("|"); return { es, tr, ex }; });

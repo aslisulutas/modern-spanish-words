@@ -29,9 +29,9 @@ function Index() {
   }, []);
   const save = (s: Set<string>) => { setKnown(s); localStorage.setItem(KEY, JSON.stringify([...s])); };
 
-  const word = WORDS[order[pos]];
+  const word = WORDS[order[pos] ?? 0]!;
   const go = useCallback((d: number) => { setFlipped(false); setPos((p) => (p + d + order.length) % order.length); }, [order.length]);
-  const shuffle = () => { const a = [...order]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } setOrder(a); setPos(0); setFlipped(false); };
+  const shuffle = () => { const a = [...order]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]!; a[i] = a[j]!; a[j] = t; } setOrder(a); setPos(0); setFlipped(false); };
   const speak = (e: React.MouseEvent) => { e.stopPropagation(); const u = new SpeechSynthesisUtterance(word.es); u.lang = "es-ES"; speechSynthesis.cancel(); speechSynthesis.speak(u); };
   const mark = (k: boolean) => { const s = new Set(known); if (k) s.add(word.es); else s.delete(word.es); save(s); go(1); };
 
