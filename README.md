@@ -32,7 +32,7 @@ Node.js gerekiyor — [nvm ile kur](https://github.com/nvm-sh/nvm#installing-and
 
 ```sh
 git clone <this-repository-url>
-cd palabra
+cd <repository-name>
 npm i
 npm run dev
 ```
